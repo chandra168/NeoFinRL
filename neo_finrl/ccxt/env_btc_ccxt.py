@@ -17,9 +17,10 @@ class BitcoinEnv:  # custom env
         self.max_stock = 1
         self.gamma = gamma
         data_ary = processed_ary
-        assert data_ary.shape == (8640, 13)  
-        self.ary_train = data_ary[2500:6000]
-        self.ary_valid = data_ary[6000:7000]
+        #assert data_ary.shape == (8640, 13)
+        data_len = len(data_ary)
+        self.ary_train = data_ary[int(data_len*0.1):int(data_len*0.7)]
+        self.ary_valid = data_ary[int(data_len*0.7):int(data_len*0.95)]
         self.ary = self.ary_train if if_train else self.ary_valid
 
 
